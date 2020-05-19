@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+import client from 'services/client';
+import { userNodeType } from "types";
+import Search from "components/Search";
+import { getUsers } from "querys";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [users, setUsers] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
+
+    function handleSearch(term: string) {
+        setSearchTerm(term)
+    }
+    
+    useEffect(()=>{
+        if(searchTerm) {
+            (async() => {
+                const variables = {
+                    search: searchTerm
+                }
+                const data = await client.request(getUsers, variables)
+                setUsers(data.search.edges)
+            })()
+        }
+    }, [searchTerm])
+
+    return (
+        <div className="App">
+            <Search onChange={handleSearch} />
+            {users.map((user:userNodeType) => <div key={user.node.id}>{user.node.name}</div>)}
+        </div>
+    )
 }
 
-export default App;
+export default App
