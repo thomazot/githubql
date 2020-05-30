@@ -1,3 +1,5 @@
+import React from 'react'
+
 export type userType = {
     id: string
     name: string
@@ -10,4 +12,8 @@ export type userNodeType = {
 
 export type componentSearchType = {
     onChange ?: (value: string) => void
+}
+
+export type ThemeType = {
+    children: React.ReactNode
 }

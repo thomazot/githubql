@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useDebounce from 'helps/useDebounce'
 import { componentSearchType } from 'typings'
+import * as S from './style'
 
 export default function Search({ onChange }: componentSearchType) {
     const [term, setTerm] = useState('')
@@ -15,7 +16,7 @@ export default function Search({ onChange }: componentSearchType) {
         [debounceSearchTerm, onChange]
     )
 
-    return <div>
-        <input type="search" value={term} onChange={(event) => setTerm(event.target.value)} />
-    </div>
+    return <S.Container>
+        <S.Input type="search" value={term} onChange={(event) => setTerm(event.target.value)} />
+    </S.Container>
 }
