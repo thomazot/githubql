@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import useDebounce from 'helps/useDebounce'
-import { componentSearchType } from 'types'
+import { componentSearchType } from 'typings'
 
 export default function Search({ onChange }: componentSearchType) {
     const [term, setTerm] = useState('')

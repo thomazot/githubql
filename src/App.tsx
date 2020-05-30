@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import client from 'services/client';
-import { userNodeType } from "types";
+import { userNodeType } from "typings";
 import Search from "components/Search";
 import { getUsers } from "querys";
 
