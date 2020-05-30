@@ -4,6 +4,7 @@ import { userNodeType } from "typings";
 import Search from "components/Search";
 import { getUsers } from "querys";
 import Theme from 'themes';
+import Logo from "components/Logo";
 
 function App() {
     const [users, setUsers] = useState([])
@@ -27,6 +28,7 @@ function App() {
 
     return (
         <Theme>
+            <Logo />
             <Search onChange={handleSearch} />
             {users.map((user:userNodeType) => <div key={user.node.id}>{user.node.name}</div>)}
         </Theme>

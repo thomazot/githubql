@@ -17,3 +17,7 @@ export type componentSearchType = {
 export type ThemeType = {
     children: React.ReactNode
 }
+
+export interface SearchInputIconProps {
+    readonly onLight ?: boolean;
+}
